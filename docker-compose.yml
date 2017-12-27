@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  mysql:
+    image: mysql:8.0.3
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: opencart
+      MYSQL_USER: opencart
+      MYSQL_PASSWORD: opencart  
+      MYSQL_ROOT_PASSWORD: opencart
+  opencart:
+    image: opencart-php:7.0-apache
+    volumes:
+      - ./upload:/var/www/html
+    container_name: opencart
+    ports:
+      - 80:80
